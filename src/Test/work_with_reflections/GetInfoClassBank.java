@@ -17,7 +17,7 @@ public class GetInfoClassBank {
         int modifirers = bankClass.getModifiers();
         System.out.println(modifirers);
         System.out.println(Modifier.PUBLIC);
-        System.out.println(Modifier.isPublic(modifirers) + " - класс " + nameClass + " является public ");
+        System.out.println(Modifier.isPublic(modifirers) + " - РєР»Р°СЃСЃ " + nameClass + " СЏРІР»СЏРµС‚СЃСЏ public ");
 
         Class<?>[] interfaces = bankClass.getInterfaces();
         Arrays.stream(interfaces).toList().forEach(System.out::println);
@@ -25,16 +25,16 @@ public class GetInfoClassBank {
         Class<?> superClass = bankClass.getSuperclass();
         System.out.println(superClass.getName());
 
-        Field[] fieldsBankFantom = bankClass.getFields();// получить поля открытые
+        Field[] fieldsBankFantom = bankClass.getFields();// РїРѕР»СѓС‡РёС‚СЊ РїРѕР»СЏ РѕС‚РєСЂС‹С‚С‹Рµ
 
-        Field[] fieldsDeclaredBankFantom = bankClass.getDeclaredFields();// получить поля все
-        Arrays.stream(fieldsDeclaredBankFantom).toList().forEach(e -> System.out.println("Field -> " + e));//Вывести все поля
+        Field[] fieldsDeclaredBankFantom = bankClass.getDeclaredFields();// РїРѕР»СѓС‡РёС‚СЊ РїРѕР»СЏ РІСЃРµ
+        Arrays.stream(fieldsDeclaredBankFantom).toList().forEach(e -> System.out.println("Field -> " + e));//Р’С‹РІРµСЃС‚Рё РІСЃРµ РїРѕР»СЏ
 
-        //получить содержимое свойства 1
+        //get content one field (РїРѕР»СѓС‡РёС‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ СЃРІРѕР№СЃС‚РІР° )
         try {
             BankFantom bankFantom2 = new BankFantom();
-            Field field = BankFantom.class.getDeclaredField("name");//возвращает Field
-            field.setAccessible(true);// Установите флаг доступности приватных полей
+            Field field = BankFantom.class.getDeclaredField("name");//РІРѕР·РІСЂР°С‰Р°РµС‚ Field
+            field.setAccessible(true);// РЈСЃС‚Р°РЅРѕРІРёС‚Рµ С„Р»Р°Рі РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё РїСЂРёРІР°С‚РЅС‹С… РїРѕР»РµР№
             Object fieldValue = field.get(bankFantom2);
             System.out.println("Field value: " + fieldValue);
         } catch (NoSuchFieldException | IllegalAccessException e) {
@@ -42,24 +42,24 @@ public class GetInfoClassBank {
         }
 
 
-        //поменять содержимое свойства 1
+        //change content field (РёР·РјРµРЅРёС‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ СЃРІРѕР№СЃС‚РІР°)
         try {
-            Field fieldBankFantom = BankFantom.class.getDeclaredField("name");//возвращает Field
-            fieldBankFantom.setAccessible(true);// Установите флаг доступности приватных полей
-            fieldBankFantom.set(bankFantom, "FANTOMAS BANK");// Установите новое значение поля bankObject
+            Field fieldBankFantom = BankFantom.class.getDeclaredField("name");//РІРѕР·РІСЂР°С‰Р°РµС‚ Field
+            fieldBankFantom.setAccessible(true);// РЈСЃС‚Р°РЅРѕРІРёС‚Рµ С„Р»Р°Рі РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё РїСЂРёРІР°С‚РЅС‹С… РїРѕР»РµР№
+            fieldBankFantom.set(bankFantom, "FANTOMAS BANK");// РЈСЃС‚Р°РЅРѕРІРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ bankObject
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
 
 
-        //вывести содержимое свойств всех
+        //display class fields ( РІС‹РІРµСЃС‚Рё СЃРѕРґРµСЂР¶РёРјРѕРµ СЃРІРѕР№СЃС‚РІ РІСЃРµС…)
         for (Field field : fieldsDeclaredBankFantom) {
             System.out.println(field.getName());
             System.out.println(field.getModifiers());
-            System.out.println(field.getType().getName());//возвращает Class<?> модификатора
+            System.out.println(field.getType().getName());//РІРѕР·РІСЂР°С‰Р°РµС‚ Class<?> РјРѕРґРёС„РёРєР°С‚РѕСЂР°
             field.setAccessible(true);
             try {
-                Object fieldValue = field.get(bankFantom); // получить содержимое полей объекта
+                Object fieldValue = field.get(bankFantom); // РїРѕР»СѓС‡РёС‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ РїРѕР»РµР№ РѕР±СЉРµРєС‚Р°
                 System.out.println("Field value: " + fieldValue);
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
@@ -67,19 +67,19 @@ public class GetInfoClassBank {
             System.out.println("--------------");
         }
 
-        //получить информация про все методы класса
+        //get information about all class methods (РїРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЏ РїСЂРѕ РІСЃРµ РјРµС‚РѕРґС‹ РєР»Р°СЃСЃР°)
         System.out.println("---Method-------");
         Method[] methods = bankClass.getDeclaredMethods();
         for (Method method : methods) {
             System.out.println(method.getName());
             System.out.println(method.getModifiers());
-            System.out.println(method.getReturnType() + " возвращает"); //возвращает Class<?>
-            System.out.println(Arrays.toString(method.getParameterTypes()) + " типы параметром принимающих");
-            System.out.println(method.getParameterCount() + " кол во принимающих параметров");
+            System.out.println(method.getReturnType() + " РІРѕР·РІСЂР°С‰Р°РµС‚"); //РІРѕР·РІСЂР°С‰Р°РµС‚ Class<?>
+            System.out.println(Arrays.toString(method.getParameterTypes()) + " С‚РёРїС‹ РїР°СЂР°РјРµС‚СЂРѕРј РїСЂРёРЅРёРјР°СЋС‰РёС…");
+            System.out.println(method.getParameterCount() + " РєРѕР» РІРѕ РїСЂРёРЅРёРјР°СЋС‰РёС… РїР°СЂР°РјРµС‚СЂРѕРІ");
             System.out.println("----------------");
 
         }
-        //запуск методов
+        //run methods (Р·Р°РїСѓСЃРє РјРµС‚РѕРґРѕРІ)
 
         BankFantom bankObject = new BankFantom();
         Class<?> bankObjectClass = bankObject.getClass();
@@ -89,18 +89,28 @@ public class GetInfoClassBank {
             method.setAccessible(true);
 
             Object result = method.invoke(bankObject, new Person("Lera", 19));
-            System.out.println("Результат: " + result);
+            System.out.println("Р РµР·СѓР»СЊС‚Р°С‚: " + result);
 
             bankObject.printPersonList();
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
 
-        //после проверить результат изменений
+        //check result
         bankObject.printPersonList();
 
 
-        //создание объекта
+        //create object
+        try {
+            Constructor<?> constructor = BankFantom.class.getConstructor();
+            Object obj = constructor.newInstance();
+            System.out.println(((BankFantom) obj).getName() + " -> new fantom Bank");
+
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
+        //create object with constructor
         try {
             Constructor<?> constructor = BankFantom.class.getConstructor();
             Object obj = constructor.newInstance();
