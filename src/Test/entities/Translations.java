@@ -1,4 +1,4 @@
-package Test.model.bank;
+package Test.entities;
 
 public interface Translations {
 }
