@@ -1,6 +1,6 @@
-package Test;
+package Test.main;
 
-import java.lang.reflect.Modifier;
+import Test.work.GetInfoClassBank;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
-package Test.bank;
+package Test.model.bank;
 
-import Test.Person;
+import Test.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;

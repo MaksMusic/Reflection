@@ -1,7 +1,7 @@
-package Test;
+package Test.work;
 
-import Test.bank.Bank;
-import Test.bank.BankFantom;
+import Test.model.Person;
+import Test.model.bank.BankFantom;
 
 import java.lang.reflect.*;
 import java.util.Arrays;
