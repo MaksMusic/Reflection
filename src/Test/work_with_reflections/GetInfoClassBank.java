@@ -1,4 +1,4 @@
-package Test.work;
+package Test.work_with_reflections;
 
 import Test.entities.Person;
 import Test.entities.BankFantom;
