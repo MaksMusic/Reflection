@@ -8,9 +8,12 @@ import java.util.Arrays;
 
 public class GetInfoClassBank {
 
-    public void getinfo() {
+    public void getinfo() throws ClassNotFoundException {
+
+        Class bankFantomClass = Class.forName("Test.entities.Person"); //можно создать класс класса вот так
 
         BankFantom bankFantom = new BankFantom();
+
         Class<?> bankClass = BankFantom.class;
         String nameClass = bankClass.getName();
 

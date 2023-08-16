@@ -1,9 +1,10 @@
 package Test.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankFantom extends Bank implements WorkWithFinance,Translations{
+public class BankFantom extends Bank implements WorkWithFinance,Translations  {
     private double balance = 100_000;
     private String name  = "FANTOM BANK";
     private List<Person> personList = new ArrayList<>(100);
